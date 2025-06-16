@@ -48,3 +48,45 @@ Routers in the same network will **flood LSAs** until all the routers build the 
 - all areas should have atleast one ABR connected to backbone area.
 - ospf interfaces in the same subnet should be in the same area.
 
+### Configuration:
+```
+router ospf 1
+network <network id> <wildcard sm> area 0
+```
+
+**Wildcard Subnet Mask**: ulta legit bass ulta karde subnet mask ka
+
+##### This configuration command tells router to:
+1. look for interfaces on the router with an ip address in the specified range
+2. activate ospf on those interfaces
+3. look for OSPF activated neighbour routers to become ospf neighbours
+
+`passive-interface g2/0` -> tells router to stop sending hello packets from that interface, however router still sends LSAs to other routers. **this command should be used on interfaces which are not connected to any routers**, because its pointless to send hello packets where no routers are present.
+
+##### Router ID order of priority:
+
+1. ﻿﻿﻿Manual configuration
+2. ﻿﻿﻿Highest IP address on a loopback interface
+3. ﻿﻿﻿Highest IP address on a physical interface
+
+**to manually configure router id:**
+`router-id 1.1.1.1`
+
+**ASBR** - Autonomous System Border Router
+- an ospf router that connectes ospf network to external network
+
+`default-information originate` -> sets router as ASBR
+
+### OSPF Cost Metric:
+**Cost Calculation:** dividing the reference bandwidth with interface bandwidth. 
+- default reference bandwidth is 100mbps
+
+| Interface Type   | Cost |
+| ---------------- | ---- |
+| Ethernet         | 10   |
+| Fast Ethernet    | 1    |
+| Gigabit Ethernet | 1    |
+| 10Gig Ethernet   | 1    |
+OSPF cost min value = 1 so even when the calculation is less than 1 we write it aas 1.
+
+`show ip ospf interface g0/1`

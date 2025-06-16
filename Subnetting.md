@@ -1,15 +1,20 @@
 ### IP Classes:
 
-| Class | First Octet | Prefix |
-| ----- | ----------- | ------ |
-| A     | 0           | /8     |
-| B     | 128         | /16    |
-| C     | 192         | /24    |
-| D     | 224         | -      |
-| E     | 240         | -      |
+| Class | First Octet | Prefix | Networks  | Hosts |
+| ----- | ----------- | ------ | --------- | ----- |
+| A     | 0           | /8     | 2^7 = 128 | 2^24  |
+| B     | 128         | /16    | 2^14      | 2^16  |
+| C     | 192         | /24    | 2^21      | 2^8   |
+| D     | 224         | -      | -         | -     |
+| E     | 240         | -      | -         | -     |
 ##### Issue with classful addressing:
 - Wastes IP addresses
 - IPv4 addresses are being exhausted. 
+
+#### Private IP Addresses:
+1. 10.0.0.0 - 10.255.255.255
+2. 172.16.0.0 - 172.31.255.255
+3. 192.168.0.0 - 192.168.255.255 
 ### CIDR - Classless Inter Domain Routing:
 Class based prefix lengths are not required, allowing larger networks to be split into smaller networks. These smaller networks are called subnetworks.
 
