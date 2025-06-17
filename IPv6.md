@@ -121,3 +121,78 @@ Working:
 ## Other IPv6 addresses:
 - unspecified- ::/0
 - loopback- ::1
+
+## IPv6 Header:
+![[Screenshot 2025-06-17 at 8.39.52 PM.png]]
+
+**Its fixed length: 40bytes**
+
+Version: ipv4 or 6
+Traffic class: Used for QoS
+Flow Label: identify specific traffic flows
+Payload length: length of transport layer segment
+Next header: TCP or UDP
+Hop limit: TTL
+
+### Solicited Node Multicast address
+
+Calculated from unicast address:
+ff02 : 0 : 0 : 0 : 0 : 0 : 01 : ff + **last 6 digits of unicast address**
+This is used by NDP
+
+#### NDP - Neighbour Discovery Protocol:
+the arp of ipv6
+
+uses ICMPv6 and Solicited Node Multicast Addresses to build mac address tables.
+
+the types of messages used:
+1. NS - neighbour solicitation mesage - ICMPv6 type 135 (ARP req)
+2. NA - neighbour advertisement - ICMPv6 type 136 (ARP reply)
+
+`show ipv6 neighbour table` -> view MAC address table
+
+**Another function of NDP:** allows hosts to automatically discover routers on the network.
+
+Two messages: 
+1. RS - Router Solicitation - ICMPv6 type 133
+	- sent to FF02::2 -> all routers
+	- asks them to identify themselves
+	- sent when interface is enabled or host is connected to network
+2. Router Ad - ICMPv6 type 134
+	- sent to FF02::1 -> all nodes
+	- sent either in response to RS or periodically
+
+---
+## SLAAC: Stateless Address Auto-Config
+
+kind of like DHCP of ipv6
+- hosts use RS and RA to learn the ipv6 prefixes of the local link and then generate ipv6 address themselves.
+- `ipv6 address autoconfig`
+- using this command we do not need to manually enter the ipv6 address.
+- the device will use EUI-64 to generate an interface id
+
+## DAD - Duplicate Address Detection
+
+- allows host to detect if other hosts on the network are using the same address
+- anytime an ipv6 interface is enabled using no shutdown, or address is configured using manual, slaac etc, DAD is performed
+- DAD uses NS and NA
+- hosts sends a NS to its own address, if it doesnt get a reply then great but if it does get a reply then it means other host is using this address.
+
+## IPv6 Static Routing:
+to enable: `ipv6 unicast-routing`
+
+by default ipv6 routing table looks exactly like ipv4:
+- network routes - C
+- local routes - L
+- Default routes - use ::/0 equivalent of 0.0.0.0/0 in IPv4
+
+```
+ipv6 <destination address with prefix> {next hop OR exit-interface } [AD]
+```
+
+1. Directly connected: **ONLY WORKS WITH SERIAL OR OTHER NON-ETHERNET INTERFACES**
+	- ipv6 destinationIP interface
+2. Recursive:
+	- ipv6 destination nexthop
+3. Fully specified:
+	- ipv6 destination interface nexthop
