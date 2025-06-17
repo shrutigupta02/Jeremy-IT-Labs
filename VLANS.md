@@ -46,13 +46,21 @@ It’s a tag added to each message (or data packet) when it travels through the 
 ### Router on a Stick:
 list of all commands:
 ```
+SWITCH CLI
+config t
+interface fa0/1 
+switch mode access vlan 10
+exit
+vlan 10
+name <name>
+
 ROUTER CLI
 config t
 interface g0/0 (whatever interface on router)
 no shutdown
 interface g0/0/0.10 {.x value is recommended to match w vlan number}
 encapsulation dot1q 10 (10 is vlan number)
-ip address 192.168.10.4 255.255.255.0 (assign the last usable address of the subnet)
+ip address 192.168.10.4 255.255.255.0 (gateway ip = assign the first usable address of the subnet)
 ```
 
 ### Native VLANs:
@@ -71,7 +79,7 @@ interface g0/0
 ip address {address} {subnet mask}
 ```
 
-## Layer 2 switch : Multilayer switch
+## Layer 3 switch : Multilayer switch
 - capable of switching and routing both.
 - can assign ip addresses to its interfaces like a router and unlike L2 switches.
 - can be used for inter vlan routing by itself i.e. it doesnt send traffic to router to perform inter vlan routing.
