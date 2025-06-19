@@ -51,7 +51,7 @@ This interface identifier can then become the host portion of a /64 IPv6 address
 #### Steps:
 1. divide mac address into two halves
 
-2. insert FF in the end and beginning of the halves
+2. insert FF in the end and FE  in the beginning of the halves
 
 3. invert the 7th bit
 
@@ -86,9 +86,19 @@ automatically generated on ipv6 enabled interfaces
 
 `ipv6 enable` -> to enable them
 
-start with FE
+start with FE80/10
+
+```
+R1(config)# **interface gigabitethernet 0/0/0**
+
+R1(config-if)# **ipv6 address fe80::1:1 link-local**
+
+R1(config-if)# **exit**
+```
 
 used for communication within a single link. cannot be used to route by routers.
+
+#### Dynamically generated LLAs: fe80::interface id (eui64 or random)
 
 **Why use Link Local Addresses?**
 - NDP - neighbour discovery protocol (ARP for ipv6) uses LLA
@@ -129,7 +139,7 @@ Working:
 
 Version: ipv4 or 6
 Traffic class: Used for QoS
-Flow Label: identify specific traffic flows
+Flow Label: identify specific traffic flows 
 Payload length: length of transport layer segment
 Next header: TCP or UDP
 Hop limit: TTL
@@ -163,10 +173,11 @@ Two messages:
 	- sent either in response to RS or periodically
 
 ---
-## SLAAC: Stateless Address Auto-Config
+## SLAAC: StateLess Address Auto-Config
 
 kind of like DHCP of ipv6
 - hosts use RS and RA to learn the ipv6 prefixes of the local link and then generate ipv6 address themselves.
+- RA contain **network prefix, prefix-length, and default-gateway information.**
 - `ipv6 address autoconfig`
 - using this command we do not need to manually enter the ipv6 address.
 - the device will use EUI-64 to generate an interface id
