@@ -63,6 +63,15 @@ encapsulation dot1q 10 (10 is vlan number)
 ip address 192.168.10.4 255.255.255.0 (gateway ip = assign the first usable address of the subnet)
 ```
 
+### L3 VLANs:
+```
+vlan 10
+name cse
+// do for all vlans on L3 switch
+
+```
+
+
 ### Native VLANs:
 basically vlans whose traffic you can send untagged on trunk ports. by default 1.
 

@@ -68,10 +68,11 @@ each set of data flowing between a source application and a destination applicat
 2. sequence number
 3. acknowledgement number
 4. header length
-5. control flags
-6. window size
-7. checksum
-8. urgent
+5. reserved bits
+6. control flags
+7. window size
+8. checksum
+9. urgent
 
 ### UDP:
 #### Key Characteristics of UDP:
