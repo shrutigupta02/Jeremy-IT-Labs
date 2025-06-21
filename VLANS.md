@@ -1,5 +1,5 @@
 **Why do we need VLANS?**
--> To divide a LAN further into smaller networks, but subnetting is a layer 3 protocol and layer 2 protocols like broadcasting do no adhere to subnets if they are all connected to the same gateway.
+-> To divide a LAN further into smaller networks, but subnetting is a layer 3 protocol and layer 2 protocols like broadcasting do no adhere to subnets **if they are all connected to the same gateway**.
 -> Example: a comapny has three blocks: science, sales, marketing. All connected to the same gateway hence one single LAN. But they're all in different subnets. Still, if science block broadcasts something to all hosts of science block only, using the broadcasting address of science block's subnets, still the message would be broadcasted to every single host in marketing and sales block as well. This is a security risk and an overhead issue as well.
 A solution to this can be to buy separate switches for each block but it isnt cost effective.
 
@@ -174,3 +174,41 @@ vtp mode client / transparent
 ```
 vtp version 2 / 3
 ```
+
+
+# Modules:
+`mls qos trust cos` -> assign to voice vlan
+
+### Trunk Configuration Commands
+
+A **VLAN trunk** is a Layer 2 point-to-point link between switches that carries traffic for **multiple VLANs**. By default, it carries **all VLANs** unless restricted by configuration.
+
+To **enable a trunk**, the following commands are used in interface configuration mode:
+
+| **Command**                                 | **Description**                                |
+| ------------------------------------------- | ---------------------------------------------- |
+| `switchport mode trunk`                     | Sets the interface to trunk mode               |
+| `switchport trunk native vlan <vlan-id>`    | Sets the native VLAN                           |
+| `switchport trunk allowed vlan <vlan-list>` | Specifies which VLANs are allowed on the trunk |
+
+
+--- 
+## Troubleshooting:
+#### 1. Missing Vlans:
+symptoms:
+- Host can't reach gateway or other VLANs
+- `show vlan brief` doesn't list the VLAN
+- Port says **“Access Mode VLAN: 10 (Inactive)”**
+
+#### 2. Trunk issues:
+- Trunk port (e.g., Fa0/5) missing in `show interfaces trunk`
+- Port status = **shutdown**
+
+#### 3. Access issues:
+- PC can't reach default gateway
+- Interface is **static access** but in VLAN 1
+
+#### 4. Router issues:
+- Subinterfaces exist and are UP
+- VLAN ID mismatch (e.g., VLAN 10 host, but `encapsulation dot1Q 100`)
+

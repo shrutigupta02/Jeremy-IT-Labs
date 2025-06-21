@@ -27,12 +27,12 @@ It will give up the position when it receives the BPDU of lower bridge ID.
 Once network is converged, every switch will agree on a single root bridge and only it will send BPDUs.
 
 ##### STP Cost:
-| Speed of interface | Cost |
-| ------------------ | ---- |
-| 10mbps             | 100  |
-| 100mbps            | 19   |
-| 1gbps              | 4    |
-| 10gbps             | 2    |
+| Speed of interface | Cost | RSTP    |
+| ------------------ | ---- | ------- |
+| 10mbps             | 100  | 2000000 |
+| 100mbps            | 19   | 200000  |
+| 1gbps              | 4    | 20000   |
+| 10gbps             | 2    | 2000    |
 - cost of all interfaces on root bridge will be 0.
 - if a switch has more than one interface with the lowest total cost then the interface connecting to the neighbour with the lowest bridge id is selected.
 - if that is also same then we'll consider lower neighbour port id
@@ -109,7 +109,7 @@ SW1(config)# spanning-tree vlan 20 root secondary
 - RSTP introduces **alternate ports**, which can **immediately start forwarding traffic** if the primary path fails—**no need to wait for timers**.
 
 >[!note]
->Cisco’s implementation of RSTP is called Rapid PVST+ (Per VLAN Spanning Tree+).
+>Cisco’s implementation of RSTP is called Rapid-PVST+ (Per VLAN Spanning Tree+).
 >This means **each VLAN** has its **own RSTP instance**, improving efficiency and fault isolation.
     
 | **STP (802.1D)** | **RSTP (802.1w)** |
