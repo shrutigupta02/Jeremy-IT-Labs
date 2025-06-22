@@ -3,6 +3,12 @@ Redundancy is important for network design to ensure fault tolerance.
 **The Problem of Layer 2 Loops:** In redundant switched networks, broadcast frames can loop infinitely, causing broadcast storms and MAC address flapping (continuous lookup and updation of mac add table on each switch)
 ## Spanning Tree Protocol: 802.1D
 Switches from all vendors run STP by default.
+
+PVST -> Cisco implementation of IEEE 802.1D
+RSTP -> Fast converging enhancement of IEEE 802.1D
+MSTP -> IEEE standard that reduces the number of STP instances
+MST -> Proprietary per VLAN implementation of IEEE 802.1w
+Rapid PVST+ -> an evolution of STP that provides faster convergence
 #### How STP Solves Loops:
 STP is a Layer 2 protocol that prevents these loops by putting the redundant ports *(matlab jo extra paths hote hai na that connect hosts to network in case one link breaks)* in a blocked state and these serve as backup which only come into active state when the current link breaks.
 
