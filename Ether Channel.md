@@ -83,7 +83,7 @@ channel-group 1 mode active / passive
 ##### Static Etherchannel
 - does not use a protocol to create an ether channel but statically configures it instead
 
-### Guidelines for configuration of ether channel:
+## Guidelines for configuration of ether channel:
 - **EtherChannel support** - All Ethernet interfaces must support EtherChannel.
   
 - **Speed and duplex** - all interfaces in an EtherChannel to operate at the same speed and in the same duplex mode.

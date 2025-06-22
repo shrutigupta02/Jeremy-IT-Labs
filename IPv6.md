@@ -182,6 +182,11 @@ kind of like DHCP of ipv6
 - using this command we do not need to manually enter the ipv6 address.
 - the device will use EUI-64 to generate an interface id
 
+### FLAGS:
+1. A flag -> SLAAC
+2. O -> SLAAC for IP and DHCP for other info
+3. M -> DHCP for all info
+
 ## DAD - Duplicate Address Detection
 
 - allows host to detect if other hosts on the network are using the same address
@@ -207,3 +212,33 @@ ipv6 <destination address with prefix> {next hop OR exit-interface } [AD]
 	- ipv6 destination nexthop
 3. Fully specified:
 	- ipv6 destination interface nexthop
+
+## IPv6 DHCP:
+steps:
+1. RS
+2. RA -> DHCP replies with wether to use SLAAC, Stateless DHCP or stateful DHCP
+3. host sends SOLICIT to find server
+4. server sends ADVERTISE
+5. host sends REQUEST: 
+	- INFO - SLAAC
+	- dhcp req - dhcp
+6. server replies REPLY
+
+### Stateless DHCP:
+A - 1, O - 1, M - 0
+
+config:
+```
+ipv6 nd other-config-flag
+```
+
+### Stateful config:
+```
+ipv6 nd managed-config-flag
+```
+
+### SLAAC:
+```
+ipv6 nd no-autoconfig
+```
+
