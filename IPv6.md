@@ -173,7 +173,7 @@ Two messages:
 	- sent either in response to RS or periodically
 
 ---
-## SLAAC: StateLess Address Auto-Config
+### SLAAC: StateLess Address Auto-Config
 
 kind of like DHCP of ipv6
 - hosts use RS and RA to learn the ipv6 prefixes of the local link and then generate ipv6 address themselves.

@@ -124,7 +124,7 @@ The actual method to change the bandwidth is using the speed command.
 1. **Down:** initial state, no hello packets received from neighbour
 2. **Init**: Hello received from neighbour, but own router id not in hello packet yet
 3. **Two-Way:** Both routers have received Hellos with their own Router IDs in the packet, now they are ospf neighbours. they'll maybe elect DR (designated router) and BDR (backup DR) at this stage.
-4. **Exstart:** preparation for exchange of LSAs. decide which is master router and slave router for initiating exchange. higher router id - master
+4. **Exstart:** slave master
 5. **Exchange**: exchange DBDs of a list of LSAs, compare the info to their own LSAs to see which ones they dont have
 6. **Loading**: Routers send Link State Request (LSR) messages to request missing LSAs, which are then sent in Link State Update (LSU) messages which are acknowledged using LSAck messages.
 7. **Full**: Routers have a full OSPF adjacency and identical LSDBs. They continue sending Hellos to maintain the adjacency, with a Dead Timer (default 40 seconds)
