@@ -15,7 +15,6 @@ Switch doesn't perform inter-VLAN routing, any message needed to be sent to a ho
 Total number of possible VLANs: 2^12 = 4096
 Non usable VLANs -> 1, 1002-1005
 Reserved VLANs -> 0, 4095
-
 #### How to assign interfaces to a VLAN:
 ```
 interface range g1/0 - 3
@@ -68,9 +67,7 @@ ip address 192.168.10.4 255.255.255.0 (gateway ip = assign the first usable addr
 vlan 10
 name cse
 // do for all vlans on L3 switch
-
 ```
-
 
 ### Native VLANs:
 basically vlans whose traffic you can send untagged on trunk ports. by default 1.

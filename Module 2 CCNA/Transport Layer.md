@@ -17,20 +17,13 @@ each set of data flowing between a source application and a destination applicat
 - TCP adds reliability through extra fields in its header, which require more **processing at sender and receiver** ends.
     
 - TCP breaks data into **segments** and manages them similarly to **tracked packages**, ensuring none are lost or out of order.
-    
-
 #### Key TCP Operations:
 
 1. **Number and track** data segments for each host-application session.
-    
 2. **Acknowledge** received data.
-    
 3. **Retransmit** unacknowledged data after a timeout.
-    
 4. **Sequence** data so it can be reassembled correctly if it arrives out of order.
-    
 5. **Flow control** – send data at a rate acceptable to the receiver.
-    
 
 - TCP must **establish a connection** before transmitting—via a **3-way handshake**—thus it is **connection-oriented**.
   

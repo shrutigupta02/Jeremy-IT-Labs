@@ -20,11 +20,9 @@ Session L: handles the exchange of information to initiate dialogs, keep them ac
 - In P2P networks:
     
     - **Two or more computers** are connected and share resources (like files or printers).
-        
     - Each device (peer) can act as both **client and server**, depending on the request.
-        
     - One computer can be a server for one task while being a client for another.
-        
+
 - The **client/server roles are dynamic**, set **per request**.
     
 - P2P networks also support things like **networked games** or **internet connection sharing**.

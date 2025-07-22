@@ -1,7 +1,7 @@
 # Ping:
 ### ping indicators:
 - ! -> successful
-- . -> timout
+- . -> timeout
 - U -> destination unreachable
 
 ### Extended Ping

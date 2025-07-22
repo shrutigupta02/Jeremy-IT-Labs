@@ -74,17 +74,11 @@ Within the HSRP group:
 #### **HSRP Preemption**
 
 - By default, once a router becomes active, it **retains the role** even if a higher priority router comes online.
-    
 - **Preemption** allows a higher priority router to **take over as active** when it becomes available again.
-    
 - Enabled using the `standby preempt` command.
-    
 - **Preemption rules**:
-    
     - A higher **priority** router can preempt an active router.
-        
     - A router with equal priority but **higher IPv4 address** **cannot preempt**.
-        
     - If **preemption is disabled**, the **first booted router** becomes active
 ### States:
 1. initial: when intially config or interface first becomes available

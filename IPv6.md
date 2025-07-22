@@ -130,7 +130,7 @@ Working:
 
 ## Other IPv6 addresses:
 - unspecified- ::/0
-- loopback- ::1
+- loopback- ::1/128
 
 ## IPv6 Header:
 ![[Screenshot 2025-06-17 at 8.39.52 PM.png]]
